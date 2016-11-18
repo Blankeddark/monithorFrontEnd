@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" ng-app="pmcApp"> <!--<![endif]-->
+<head>
+	<title>Login | Unify - Responsive Website Template</title>
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- Web Fonts -->
+	<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+	<!-- CSS Global Compulsory -->
+	<link rel="stylesheet" href="assets2/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets2/css/shop.style.css">
+
+	<!-- CSS Header and Footer -->
+	<link rel="stylesheet" href="assets2/css/headers/header-v5.css">
+	<link rel="stylesheet" href="assets2/css/footers/footer-v4.css">
+
+	<!-- CSS Implementing Plugins -->
+	<link rel="stylesheet" href="assets2/plugins/animate.css">
+	<link rel="stylesheet" href="assets2/plugins/line-icons/line-icons.css">
+	<link rel="stylesheet" href="assets2/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets2/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
+
+	<!-- CSS Page Style -->
+	<link rel="stylesheet" href="assets2/css/pages/log-reg-v3.css">
+
+	<!-- Style Switcher -->
+	<link rel="stylesheet" href="assets2/css/plugins/style-switcher.css">
+
+	<!-- CSS Theme -->
+	<link rel="stylesheet" href="assets2/css/theme-colors/default.css" id="style_color">
+
+	<!-- CSS Customization -->
+	<link rel="stylesheet" href="assets2/css/custom.css">
+    
+    <!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- Web Fonts -->
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+
+	<!-- CSS Global Compulsory -->
+	<link rel="stylesheet" href="assets3/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets3/css/style.css">
+
+	<!-- CSS Header and Footer -->
+	<link rel="stylesheet" href="assets3/css/headers/header-default.css">
+	<link rel="stylesheet" href="assets3/css/footers/footer-v1.css">
+
+	<!-- CSS Implementing Plugins -->
+	<link rel="stylesheet" href="assets3/plugins/animate.css">
+	<link rel="stylesheet" href="assets3/plugins/line-icons/line-icons.css">
+	<link rel="stylesheet" href="assets3/plugins/font-awesome/css/font-awesome.min.css">
+
+	<!-- CSS Theme -->
+	<link rel="stylesheet" href="assets3/css/theme-colors/default.css" id="style_color">
+	<link rel="stylesheet" href="assets3/css/theme-skins/dark.css">
+
+	<!-- CSS Customization -->
+	<link rel="stylesheet" href="assets3/css/custom.css">
+</head>
+
+<body class="header-fixed" ng-controller="ControladorCtrl">
+
+	<div class="wrapper">
+		<!--=== Header v5 ===-->
+		<div class="header-v5 header-static">
+			<!-- Topbar v3 -->
+			<div class="topbar-v3">
+				<div class="search-open">
+					<div class="container">
+						<input type="text" class="form-control" placeholder="Search">
+						<div class="search-close"><i class="icon-close"></i></div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<!-- Topbar Navigation -->
+
+						</div>
+						<div class="col-sm-6">
+							<ul class="list-inline right-topbar pull-right">
+                                <li>
+                                  <div class="shop-badge badge-icons pull-right">
+						<a href="#"><i class="fa fa-shopping-cart"></i></a>
+						<span class="badge badge-sea rounded-x">{{cantidadTutorias}}</span>
+						<div class="badge-open">
+                        <div ng-repeat="tutoria in tutoriasAgendadas">
+							<ul class="list-unstyled mCustomScrollbar" data-mcs-theme="minimal-dark">
+								<li>
+									<img src="assets2/img/tutoria.JPG" alt="">
+									<button type="button" class="close">×</button>
+									<div class="overflow-h">
+										<span>{{tutoria.duracion}}</span>
+										<span>{{tutoria.lugar}}</span>
+										<span>{{tutoria.fecha}}</span>
+									</div>
+								</li>
+							</ul>
+                       </div>
+							<!--
+							<div class="subtotal">
+								<div class="overflow-h margin-bottom-10">
+									<span>Subtotal</span>
+									<span class="pull-right subtotal-cost">$1200.00</span>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<a href="shop-ui-inner.html" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop btn-block">View Cart</a>
+									</div>
+									<div class="col-xs-6">
+										<a href="shop-ui-add-to-cart.html" class="btn-u btn-u-sea-shop btn-block">Checkout</a>
+									</div>
+								</div>
+							</div>
+							-->
+						</div>
+					    </div>
+                                </li>
+								<li><a href="#" ng-click="miperfil()">Mi Cuenta</a></li>
+                                <li><a href="#" ng-click="cerrarSesion()">Cerrar Sesión</a></li>
+							</ul>
+						</div>
+					</div>
+				</div><!--/container-->
+			</div>
+			<!-- End Topbar v3 -->
+
+		</div>
+		<!--=== End Header v5 ===-->
+
+		<!--=== Breadcrumbs v4 ===-->
+		<div class="breadcrumbs-v4">
+			<div class="container">
+				<span class="page-name">Busca a tu monitor</span>
+				<h1>Comienza <span class="shop-green">tu</span> búsqueda</h1>
+
+					<div class="panel-body">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<button type= "submit" class="btn-u btn-u-sea" ng-click="buscarTutores()" type="button">Buscar Tutores</button>
+								<div class="col-lg-10">
+									<input class="form-control" id="inputEmail1" ng-model="materiaBuscada" placeholder="Ingresa tu materia" type="text">
+								</div>
+							</div>
+						</form>
+					</div>
+			</div><!--/end container-->
+		</div>
+		<!--=== End Breadcrumbs v4 ===-->
+         
+        <!--=== Profile ===-->
+		<div class="container content profile" ng-show="monithor">
+			<div class="row">
+				<!-- Profile Content -->
+				<div class="col-md-9">
+					<div class="profile-body">
+						<div class="profile-bio">
+							<div class="row">
+								<div class="col-md-5">
+									<img class="img-responsive md-margin-bottom-10" src="assets2/img/team/01.jpg" alt="">
+									<button class="btn-u" data-toggle="modal" data-target="#responsive">Solicitar tutoría</button>
+							<div class="modal fade" id="responsive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title" id="myModalLabel4">Agenda una tutoría</h4>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-md-6">
+													<h4>Fecha:</h4>
+													<p><input class="form-control" ng-model="tutoriaAgendada.fecha" type="date" /></p>
+												</div>
+												<div class="col-md-6">
+													<h4>Duración</h4>
+													<p><input class="form-control" ng-model="tutoriaAgendada.duracion" type="time" /></p>
+												</div>
+                                                <div class="col-md-6">
+													<h4>Lugar</h4>
+													<p><input class="form-control" ng-model="tutoriaAgendada.lugar" type="text" /></p>
+												</div>
+                                                <div class="col-md-6">
+													<h4>Comentarios Adicionales</h4>
+													<p><input class="form-control" ng-model="tutoriaAgendada.comentario" type="text" /></p>
+												</div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Cancelar</button>
+											<button type="button" class="btn-u btn-u-primary" ng-click="agendar()" data-dismiss="modal">Agendar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+								</div>
+								<div class="col-md-7">
+									<h2>Alejandra Espinel</h2>
+									<span><strong>Ocupación:</strong> Estudiante de matemática</span>
+									<hr>
+									<p>Soy Alejandra Espinel estudiante de 6to semestre de la Universidad de los Andes. He sido monitora de las materias de Cálculo diferencial e integral por más de 3 semestres. Poseo experiencia docente escolar y poseo conocimientos e intereses en las áreas de física y computación.</p>
+									<p>Proin mauris odio, pharetra quis ligula non, vulputate vehicula quam. Nunc in libero vitae nunc ultricies tincidunt ut sed leo. Sed luctus dui ut congue consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+								</div>
+							</div>
+						</div><!--/end row-->
+
+						<hr>
+
+						<div class="row">
+							<!--Social Icons v3-->
+							<div class="col-sm-6 sm-margin-bottom-30">
+								<div class="panel panel-profile">
+									<div class="panel-heading overflow-h">
+										<h2 class="panel-title heading-sm pull-left"><i class="fa fa-pencil"></i> Redes Sociales <small>(option 1)</small></h2>
+										<a href="#"><i class="fa fa-cog pull-right"></i></a>
+									</div>
+									<div class="panel-body">
+										<ul class="list-unstyled social-contacts-v2">
+											<li><i class="rounded-x tw fa fa-twitter"></i> <a href="#">ale.espinel</a></li>
+											<li><i class="rounded-x fb fa fa-facebook"></i> <a href="#">Alejandra Espinel</a></li>
+											<li><i class="rounded-x sk fa fa-skype"></i> <a href="#">aleEspinel77</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!--End Social Icons v3-->
+
+							<!--Skills-->
+							<div class="col-sm-6 sm-margin-bottom-30">
+								<div class="panel panel-profile">
+									<div class="panel-heading overflow-h">
+										<h2 class="panel-title heading-sm pull-left"><i class="fa fa-lightbulb-o"></i>Materias</h2>
+										<a href="#"><i class="fa fa-cog pull-right"></i></a>
+									</div>
+									<div class="panel-body">
+										<small>Cálculo diferencial</small>
+										<small>92%</small>
+										<div class="progress progress-u progress-xxs">
+											<div style="width: 92%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="92" role="progressbar" class="progress-bar progress-bar-u">
+											</div>
+										</div>
+
+										<small>Cálculo vectorial</small>
+										<small>77%</small>
+										<div class="progress progress-u progress-xxs">
+											<div style="width: 77%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="77" role="progressbar" class="progress-bar progress-bar-u">
+											</div>
+										</div>
+
+										<small>Dalgo</small>
+										<small>81%</small>
+										<div class="progress progress-u progress-xxs">
+											<div style="width: 81%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="81" role="progressbar" class="progress-bar progress-bar-u">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--End Skills-->
+						</div><!--/end row-->
+
+						<hr>
+
+						<!--Timeline-->
+						<div class="panel panel-profile">
+							<div class="panel-heading overflow-h">
+								<h2><i class="fa fa-briefcase"></i>Experiencia</h2>
+								<a href="#"><i class="fa fa-cog pull-right"></i></a>
+							</div>
+							<div class="panel-body margin-bottom-40">
+								<ul class="timeline-v2 timeline-me">
+									<li>
+										<time datetime="" class="cbp_tmtime"><span>Monitora de cálculo diferencial</span> <span>2014 - hoy</span></time>
+										<i class="cbp_tmicon rounded-x hidden-xs"></i>
+										<div class="cbp_tmlabel">
+											<h2>Universidad de los Andes</h2>
+											<p>Monitora del profesor Julio Profe durante los semestres 201510 en adelante. Experiencia dando monitorías grupales y realizando y resolviendo talleres.</p>
+										</div>
+									</li>
+									<li>
+										<time datetime="" class="cbp_tmtime"><span>Monitora de dalgo</span> <span>2014 - 2015</span></time>
+										<i class="cbp_tmicon rounded-x hidden-xs"></i>
+										<div class="cbp_tmlabel">
+											<h2>Universidad de los Andes</h2>
+											<p>Monitora de la materia de diseño y análisis de algoritmos.</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--End Timeline-->
+
+						<!--Timeline-->
+						<div class="panel panel-profile">
+							<div class="panel-heading overflow-h">
+								<h2><i class="fa fa-mortar-board"></i> Educación</h2>
+								<a href="#"><i class="fa fa-cog pull-right"></i></a>
+							</div>
+							<div class="panel-body">
+								<ul class="timeline-v2 timeline-me">
+									<li>
+										<time datetime="" class="cbp_tmtime"><span>Pregrado en matemáticas</span> <span>2014 - hoy</span></time>
+										<i class="cbp_tmicon rounded-x hidden-xs"></i>
+										<div class="cbp_tmlabel">
+											<h2>Universidad de los Andes</h2>
+											<p>Actualmente estudiante de 6to semestre del pregrado de matemáticas de la universidad de los andes. </p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--End Timeline-->
+
+						<hr>
+					</div>
+				</div>
+				<!-- End Profile Content -->
+			</div>
+		</div>
+		<!--=== End Profile ===-->
+
+    
+		<div class="container s-results padding-top-5  margin-bottom-50" ng-show="!watachi && !monithor">
+
+			<h2>Hay {{contadorResultados}} tutores para esta materia</h2>
+
+			<!-- Begin Inner Results -->
+			<div class="inner-results"  ng-repeat="random in resultadosRandom"
+               
+				<h3><a href="#" ng-click="perfilmonitor()">{{random.nombre}} </a></h3>
+                
+				<ul class="list-inline up-ul">
+					<li style="color: yellowgreen;">{{random.rdisponibilidad}}</li>
+				</ul>
+				<div class="overflow-h">
+					<img src="assets2/img/user.jpg" alt="">
+					<div class="overflow-a" >
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut orci urna. Morbi blandit enim eget risus posuere dapibus. Vestibulum velit nisi, tempus in placerat non, auctor eu purus. Morbi suscipit porta libero, ac tempus tellus consectetur non. Praesent eget consectetur nunc. Aliquam erat volutpat. Suspendisse ultrices eros eros, consectetur facilisis urna posuere id.</p>
+						<ul class="list-inline down-ul">
+							<li>
+								<ul class="list-inline star-vote">
+                                    <li><i class="color-green fa fa-star"></i></li>
+									<li><i class="color-green fa fa-star"></i></li>
+									<li><i class="color-green fa fa-star"></i></li>
+									<li><i class="color-green fa fa-star"></i></li>
+									<li><i class="color-green fa fa-star-half-o"></i></li>
+								</ul>
+							</li>
+							<li>Monithor {{random.rtiempo}}</li>
+							<li>{{random.atendidos}} estudiantes atendidos</li>
+                            <li>Precio por hora: {{random.precioHora}} COP</li>
+						</ul>
+					</div>
+				</div>
+                
+			</div>
+			<!-- End Inner Results -->
+
+			<hr>
+
+			<div class="margin-bottom-30"></div>
+
+			<div class="text-left">
+				<ul class="pagination">
+					<li><a href="#">«</a></li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+			</div>
+
+
+		</div>
+
+		<!--=== Shop Suvbscribe ===-->
+		<div class="shop-subscribe">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 md-margin-bottom-20">
+						<h2>Suscribete para recibir nuevas <strong>noticias</strong></h2>
+					</div>
+					<div class="col-md-4">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Ingresa tu email">
+							<span class="input-group-btn">
+								<button class="btn" type="button"><i class="fa fa-envelope-o"></i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div><!--/end container-->
+		</div>
+		<!--=== End Shop Suvbscribe ===-->
+
+		<!--=== Footer v4 ===-->
+		<div class="footer-v4">
+			<div class="footer">
+				<div class="container">
+					<div class="row">
+						<!-- About -->
+						<div class="col-md-4 md-margin-bottom-40">
+							<a href="index.html"><img class="footer-logo" src="assets2/img/logom.png" alt="" style="width:40px; height:40px;"></a>onithor
+							<p>Más acerca de Mohitor dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
+							<br>
+							<ul class="list-unstyled address-list margin-bottom-20">
+								<li><i class="fa fa-angle-right"></i>Cra. 1 #18a12, Bogotá</li>
+								<li><i class="fa fa-angle-right"></i>(571) 3394949 </li>
+								<li><i class="fa fa-angle-right"></i>www.monithor.com.co </li>
+								<li><i class="fa fa-angle-right"></i>byzum.studios@gmail.com</li>
+							</ul>
+
+							<ul class="list-inline shop-social">
+								<li><a href="#"><i class="fb rounded-md fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="tw rounded-md fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="gp rounded-md fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="yt rounded-md fa fa-youtube"></i></a></li>
+							</ul>
+						</div>
+						<!-- End About -->
+
+						<!-- Simple List -->
+						<div class="col-md-2 col-sm-3">
+							<div class="row">
+								<div class="col-sm-12 col-xs-6">
+									<h2 class="thumb-headline">Secciones</h2>
+									<ul class="list-unstyled simple-list margin-bottom-20">
+										<li><a href="#">Ultima Hora</a></li>
+										<li><a href="#">Exclusiva</a></li>
+										<li><a href="#">Documentos </a></li>
+										<li><a href="#">Francisco papa</a></li>
+										<li>...</li>
+									</ul>
+								</div>
+
+								<div class="col-sm-12 col-xs-6">
+									<h2 class="thumb-headline">Temas</h2>
+									<ul class="list-unstyled simple-list">
+										<li><a href="#">Ultima Hora</a></li>
+										<li><a href="#">Exclusiva</a></li>
+										<li><a href="#">Documentos </a></li>
+										<li><a href="#">Francisco papa</a></li>
+										<li>...</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-3">
+							<div class="row">
+								<div class="col-sm-12 col-xs-6">
+									<h2 class="thumb-headline">Utilidades</h2>
+									<ul class="list-unstyled simple-list margin-bottom-20">
+										<li><a href="#">Ultima Hora</a></li>
+										<li><a href="#">Exclusiva</a></li>
+										<li><a href="#">Documentos </a></li>
+										<li>...</li>
+									</ul>
+								</div>
+
+								<div class="col-sm-12 col-xs-6">
+									<h2 class="thumb-headline">Documentos</h2>
+									<ul class="list-unstyled simple-list">
+										<li><a href="#">Ultima Hora</a></li>
+										<li><a href="#">Exclusiva</a></li>
+										<li><a href="#">Documentos </a></li>
+										<li><a href="#">Francisco papa</a></li>
+										<li>...</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-3">
+							<div class="row">
+								<div class="col-sm-12 col-xs-6">
+									<h2 class="thumb-headline">Publicidad</h2>
+									<ul class="list-unstyled simple-list margin-bottom-20">
+										<li><a href="#">Ultima Hora</a></li>
+										<li><a href="#">Exclusiva</a></li>
+										<li><a href="#">Documentos </a></li>
+										<li><a href="#">Francisco papa</a></li>
+										<li>...</li>
+									</ul>
+								</div>
+
+								<div class="col-sm-12 col-xs-6">
+									<h2 class="thumb-headline">Contacto</h2>
+									<ul class="list-unstyled simple-list">
+										<li><a href="#">Ultima Hora</a></li>
+										<li><a href="#">Exclusiva</a></li>
+										<li><a href="#">Documentos </a></li>
+										<li><a href="#">Francisco papa</a></li>
+										<li>...</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-3">
+							<div class="row">
+								<div class="col-sm-12 col-xs-6">
+									<h2 class="thumb-headline">Utilidades</h2>
+									<ul class="list-unstyled simple-list margin-bottom-20">
+										<li><a href="#">Ultima Hora</a></li>
+										<li><a href="#">Exclusiva</a></li>
+										<li>...</li>
+									</ul>
+								</div>
+
+								<div class="col-sm-12 col-xs-6">
+									<h2 class="thumb-headline">Documentos</h2>
+									<ul class="list-unstyled simple-list">
+										<li><a href="#">Ultima Hora</a></li>
+										<li><a href="#">Exclusiva</a></li>
+										<li>...</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- End Simple List -->
+					</div><!--/end row-->
+				</div><!--/end continer-->
+			</div><!--/footer-->
+
+			<div class="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<p>
+								2014 &copy; Unify. ALL Rights Reserved.
+								<a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+							</p>
+						</div>
+						<div class="col-md-6">
+							<ul class="list-inline sponsors-icons pull-right">
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div><!--/copyright-->
+		</div>
+		<!--=== End Footer v4 ===-->
+	</div><!--/wrapper-->
+
+
+	<!-- End Wait Block -->
+
+	<!-- JS Global Compulsory -->
+	<script src="assets2/plugins/jquery/jquery.min.js"></script>
+	<script src="assets2/plugins/jquery/jquery-migrate.min.js"></script>
+	<script src="assets2/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!-- JS Implementing Plugins -->
+	<script src="assets2/plugins/back-to-top.js"></script>
+	<script src="assets2/s2/plugins/smoothScroll.js"></script>
+	<script src="assets2/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets2/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
+	<script src="assets2/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+	<!-- JS Customization -->
+	<script src="assets2/js/custom.js"></script>
+	<!-- JS Page Level -->
+	<script src="assets2/js/shop.app.js"></script>
+	<script src="assets2/js/forms/page_login.js"></script>
+	<script src="assets2/js/plugins/style-switcher.js"></script>
+	<script src="assets2/js/forms/page_contact_form.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="lib/node_modules/angular-route/angular-route.js"></script>
+    <script src="lib/node_modules/angular-route/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="scripts/controlador.js"></script>
+	<script>
+		jQuery(document).ready(function() {
+			App.init();
+			Login.initLogin();
+			App.initScrollBar();
+			StyleSwitcher.initStyleSwitcher();
+			PageContactForm.initPageContactForm();
+		});
+	</script>
+<!--[if lt IE 9]>
+	<script src="assets2/plugins/respond.js"></script>
+	<script src="assets2/plugins/html5shiv.js"></script>
+	<script src="assets2/js/plugins/placeholder-IE-fixes.js"></script>
+	<script src="assets2/plugins/sky-forms-pro/skyforms/js/sky-forms-ie8.js"></script>
+	<![endif]-->
+<!--[if lt IE 10]>
+	<script src="assets2/plugins/sky-forms-pro/skyforms/js/jquery.placeholder.min.js"></script>
+	<![endif]-->
+
+</body>
+</html>
